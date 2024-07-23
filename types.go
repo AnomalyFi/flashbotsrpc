@@ -478,3 +478,16 @@ type FlashbotsPrivateTxPreferences struct {
 type FlashbotsCancelPrivateTransactionRequest struct {
 	TxHash string `json:"txHash"`
 }
+
+type FlashbotsSendBundleCrossRollupRequest struct {
+	Txs               map[string]string `json:"txs"`
+	BlockNumber       map[string]string `json:"blockNumber"`
+	MinTimestamp      *uint64           `json:"minTimestamp,omitempty"` // (Optional) Number, the minimum timestamp for which this bundle is valid, in seconds since the unix epoch
+	MaxTimestamp      *uint64           `json:"maxTimestamp,omitempty"` // (Optional) Number, the maximum timestamp for which this bundle is valid, in seconds since the unix epoch
+	RevertingTxHashes []string          `json:"revertingTxHashes,omitempty"`
+	ReplacementUuid   string            `json:"replacementUUID,omitempty"`
+}
+
+type FlashbotsSendBundleCrossRollupResponse struct {
+	BundleHash string `json:"bundleHash"`
+}
