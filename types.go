@@ -491,3 +491,22 @@ type FlashbotsSendBundleCrossRollupRequest struct {
 type FlashbotsSendBundleCrossRollupResponse struct {
 	BundleHash string `json:"bundleHash"`
 }
+
+type FlashbotsGetBundleCrossRollupStatusRequest struct {
+	BundleHash string `json:"bundleHash"`
+}
+
+type FlashbotsGetBundleCrossRollupStatusResponse struct {
+	StatusCode int    `json:"statusCode"` // 0x0 -> included; 0x1 -> rejected; 0x2 sent but not included;
+	Status     string `json:"status"`     // descriptive string
+}
+
+type FlashbotsCancelBundleCrossRollupRequest struct {
+	ReplacementUuid string `json:"replacementUUID"`
+}
+
+type FlashbotsCancelBundleCrossRollupResponse struct {
+	BundleHash string `json:"bundleHash"`
+	StatusCode int    `json:"statusCode"` // 0x0 -> included; 0x1 -> rejected; 0x2 sent but not included;
+	Status     string `json:"status"`
+}
