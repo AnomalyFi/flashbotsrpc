@@ -499,7 +499,8 @@ type FlashbotsCallBundleCrossRollupRequest struct {
 }
 
 type FlashbotsCallBundleCrossRollupResponse struct {
-	Results map[string][]FlashbotsCallBundleResult
+	Results map[string][]FlashbotsCallBundleResult `json:"results"`
+	Errors  map[string]error                       `json:"errors"`
 }
 
 type FlashbotsGetBundleCrossRollupStatusRequest struct {
