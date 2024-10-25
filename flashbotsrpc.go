@@ -636,6 +636,15 @@ func (rpc *FlashbotsRPC) FlashbotsSendBundleCrossRollup(privKey *ecdsa.PrivateKe
 	return res, err
 }
 
+func (rpc *FlashbotsRPC) FlashbotsCallBundleCrossRollup(privKey *ecdsa.PrivateKey, param FlashbotsCallBundleCrossRollupRequest) (res FlashbotsCallBundleCrossRollupResponse, err error) {
+	rawMsg, err := rpc.CallWithFlashbotsSignature("eth_callBundleCrossRollup", privKey, param)
+	if err != nil {
+		return res, err
+	}
+	err = json.Unmarshal(rawMsg, &res)
+	return res, err
+}
+
 func (rpc *FlashbotsRPC) FlashbotsCancelBundleCrossRollup(privKey *ecdsa.PrivateKey, param FlashbotsCancelBundleCrossRollupRequest) (res FlashbotsCancelBundleCrossRollupResponse, err error) {
 	rawMsg, err := rpc.CallWithFlashbotsSignature("eth_cancelBundleCrossRollup", privKey, param)
 	if err != nil {

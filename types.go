@@ -492,6 +492,16 @@ type FlashbotsSendBundleCrossRollupResponse struct {
 	BundleHash string `json:"bundleHash"`
 }
 
+type FlashbotsCallBundleCrossRollupRequest struct {
+	Txs         map[string][]string `json:"txs"`
+	BlockNumber map[string]string   `json:"blockNumber"`
+	Timestamp   int64               `json:"timestamp"`
+}
+
+type FlashbotsCallBundleCrossRollupResponse struct {
+	Results map[string][]FlashbotsCallBundleResult
+}
+
 type FlashbotsGetBundleCrossRollupStatusRequest struct {
 	BundleHash string `json:"bundleHash"`
 }
